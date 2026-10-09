@@ -1,3 +1,4 @@
+
 ===============================================================================
               ORACLE MIDDLEWARE & APPLICATION LOG CLEANUP SCRIPTS
 ===============================================================================
@@ -111,3 +112,5 @@ cleanup_maximo.sh  WebLogic, Maximo & OHS Logs    > 10 days      > 30 days
     0 4 * * * /oracle/scripts/crontab/cleanup_maximo.sh > /dev/null 2>&1
 
 ===============================================================================
+
+```
