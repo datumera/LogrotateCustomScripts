@@ -1,7 +1,4 @@
-
-===============================================================================
               ORACLE MIDDLEWARE & APPLICATION LOG CLEANUP SCRIPTS
-===============================================================================
 
 Script Suite : cleanup_dcm.sh, cleanup_liferay.sh, cleanup_maximo.sh
 Author       : dAtUmErA
@@ -9,18 +6,14 @@ Description  : Automates log rotation, gzip compression, and retention cleanup
                for Oracle WebLogic Server, Oracle HTTP Server (OHS), Liferay
                Portal, and IBM Maximo Asset Management.
 
-===============================================================================
 1. OVERVIEW
-===============================================================================
 
 Application servers generate large volumes of diagnostic logs, trace files, and
 temporary artifacts over time. These scripts automatically scan target domain
 directories, compress old log files using gzip to save disk space, and purge
 expired archives and temporary export files based on defined retention thresholds.
 
-===============================================================================
 2. REPOSITORY STRUCTURE
-===============================================================================
 
 Script File        Target Platform           Description
 -------------------------------------------------------------------------------
@@ -36,9 +29,8 @@ cleanup_maximo.sh  WebLogic, Maximo & OHS    Automates cleanup for Maximo
                                              application logs, integration XML
                                              interface files, and OHS logs.
 
-===============================================================================
+
 3. KEY FEATURES & COMMON BEHAVIORS
-===============================================================================
 
 * User Execution Enforcement : All scripts strictly require execution by the
                                'weblogic' system user.
@@ -52,9 +44,7 @@ cleanup_maximo.sh  WebLogic, Maximo & OHS    Automates cleanup for Maximo
                                JMS servers, diagnostic images) from
                                accidental deletion or double-compression.
 
-===============================================================================
 4. RETENTION POLICIES SUMMARY
-===============================================================================
 
 Script             Log / File Type                Compress       Delete
 -------------------------------------------------------------------------------
@@ -66,9 +56,7 @@ cleanup_liferay.sh WebLogic, Liferay & OHS Logs   > 60 days      > 180 days
 cleanup_maximo.sh  WebLogic, Maximo & OHS Logs    > 10 days      > 30 days
                    Interface XML Files (EXTSYS1)  N/A            > 1 day
 
-===============================================================================
 5. CONFIGURATION PATHS
-===============================================================================
 
 [A] DCM Cleanup (cleanup_dcm.sh):
     - WebLogic Logs : /oracle/Domains/DCM_Domain/servers/*/logs/
@@ -88,17 +76,13 @@ cleanup_maximo.sh  WebLogic, Maximo & OHS Logs    > 10 days      > 30 days
     - Maximo Logs   : /oracle/Domains/MAXDEV_Domain/maximo/logs/maximo/logs/
     - XML Interface : /logs/intglobaldir/xmlfiles/
 
-===============================================================================
 6. PREREQUISITES
-===============================================================================
 
 - OS                  : Enterprise Linux (RHEL / Oracle Linux)
 - System User         : weblogic
 - Required Utilities  : bash, gzip, find, grep, tput
 
-===============================================================================
 7. USAGE & AUTOMATION
-===============================================================================
 
 [A] Manual Execution:
 
@@ -110,7 +94,5 @@ cleanup_maximo.sh  WebLogic, Maximo & OHS Logs    > 10 days      > 30 days
     0 2 * * * /oracle/scripts/crontab/cleanup_dcm.sh > /dev/null 2>&1
     0 3 * * * /oracle/scripts/crontab/cleanup_liferay.sh > /dev/null 2>&1
     0 4 * * * /oracle/scripts/crontab/cleanup_maximo.sh > /dev/null 2>&1
-
-===============================================================================
 
 ```
